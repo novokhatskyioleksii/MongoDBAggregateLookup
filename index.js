@@ -14,6 +14,10 @@ const MongoClient = mongodb.MongoClient;
 let client;
 let db;
 
+// prepare data
+// array of teachers { _id: ObjectId() }
+// array of students { _id: ObjectId(), teacherId: ObjectId() }
+// array of exams { _id: ObjectId(), passed: true }
 const teachers = [];
 const students = [];
 const exams = [];
@@ -37,6 +41,7 @@ for (let i = 0; i < 100; i++) {
   exams.push({ studentId: student3Id, passed: true });
 }
 
+// prepare mongoDB and create collections 'teachers', 'students', 'exams'
 const createMongoInstance = async () => {
   await replSet.waitUntilRunning();
   const connectionString = await replSet.getConnectionString();
@@ -50,6 +55,7 @@ const createMongoInstance = async () => {
   return db;
 };
 
+// get data by multiple requests to DB (students by each teacher and exams by each student)
 const multipleRequests = async () => {
   const before = microseconds.now();
 
@@ -67,6 +73,7 @@ const multipleRequests = async () => {
   return (after - before) / 1000;
 };
 
+// get all entities from collections 'teachers', 'students' and 'exams' and filter students by teacher and exams by student
 const getCollections = async () => {
   const before = microseconds.now();
 
@@ -84,6 +91,7 @@ const getCollections = async () => {
   return (after - before) / 1000;
 };
 
+// use MongoDB aggregation function to get data from different collections
 const aggregation = async () => {
   const before = microseconds.now();
 
@@ -108,6 +116,7 @@ const aggregation = async () => {
   return (after - before) / 1000;
 };
 
+// run function to get array of results [{ _id: ObjectId(), examsPassed: 6 }, ...]
 const run = async () => {
   try {
     await createMongoInstance();
