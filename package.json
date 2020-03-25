@@ -1,0 +1,16 @@
+{
+  "name": "mongodbaggregate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "runOp": "ITERATIONS_NUMBER=100 node ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "microseconds": "^0.2.0",
+    "mongodb": "^3.5.5",
+    "mongodb-memory-server": "^6.5.0"
+  }
+}
