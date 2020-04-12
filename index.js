@@ -15,9 +15,9 @@ let client;
 let db;
 
 // prepare data
-// array of teachers { _id: ObjectId() }
-// array of students { _id: ObjectId(), teacherId: ObjectId() }
-// array of exams { _id: ObjectId(), passed: true }
+// array of teachers { _id: new ObjectId() }
+// array of students { _id: new ObjectId(), teacherId: new ObjectId() }
+// array of exams { _id: new ObjectId(), passed: true }
 const teachers = [];
 const students = [];
 const exams = [];
@@ -30,15 +30,15 @@ for (let i = 0; i < 100; i++) {
   students.push({ _id: student1Id, teacherId: teacherId });
   students.push({ _id: student2Id, teacherId: teacherId });
   students.push({ _id: student3Id, teacherId: teacherId });
-  exams.push({ studentId: student1Id, passed: true });
-  exams.push({ studentId: student1Id, passed: false });
-  exams.push({ studentId: student1Id, passed: true });
-  exams.push({ studentId: student2Id, passed: true });
-  exams.push({ studentId: student2Id, passed: false });
-  exams.push({ studentId: student2Id, passed: true });
-  exams.push({ studentId: student3Id, passed: true });
-  exams.push({ studentId: student3Id, passed: false });
-  exams.push({ studentId: student3Id, passed: true });
+  exams.push({ _id: new ObjectId(), studentId: student1Id, passed: true });
+  exams.push({ _id: new ObjectId(), studentId: student1Id, passed: false });
+  exams.push({ _id: new ObjectId(), studentId: student1Id, passed: true });
+  exams.push({ _id: new ObjectId(), studentId: student2Id, passed: true });
+  exams.push({ _id: new ObjectId(), studentId: student2Id, passed: false });
+  exams.push({ _id: new ObjectId(), studentId: student2Id, passed: true });
+  exams.push({ _id: new ObjectId(), studentId: student3Id, passed: true });
+  exams.push({ _id: new ObjectId(), studentId: student3Id, passed: false });
+  exams.push({ _id: new ObjectId(), studentId: student3Id, passed: true });
 }
 
 // prepare mongoDB and create collections 'teachers', 'students', 'exams'
