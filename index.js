@@ -116,8 +116,8 @@ const aggregation = async () => {
   return (after - before) / 1000;
 };
 
-// run function to get array of results [{ _id: ObjectId(), examsPassed: 6 }, ...]
-const run = async () => {
+// function to get array of results [{ _id: ObjectId(), examsPassed: 6 }, ...]
+(async () => {
   try {
     await createMongoInstance();
     await db.collection('teachers').insertMany(teachers);
@@ -167,6 +167,4 @@ const run = async () => {
     console.log(e);
     process.exit(1);
   }
-};
-
-run();
+})();
