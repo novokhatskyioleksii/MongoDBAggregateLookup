@@ -124,6 +124,10 @@ const aggregation = async () => {
     await db.collection('students').insertMany(students);
     await db.collection('exams').insertMany(exams);
 
+    // some indexes added
+    // await db.collection('students').createIndex({ 'teacherId': 1 });
+    // await db.collection('exams').createIndex({ 'studentId': 1 });
+
     const numberOfIterations = Number(process.env.ITERATIONS_NUMBER);
     console.log('Number of iterations: ', numberOfIterations);
 
